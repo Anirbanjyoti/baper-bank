@@ -1,10 +1,21 @@
+function inputValue(value){
+    const inputFIeld = document.getElementById(value);
+    const getAmount = inputFIeld.value;
+    const newAmount = parseFloat(getAmount);
+     // clear input box
+    inputFIeld.value = '';
+    return newAmount;
+}
+
 // FOr Deposit Button
 const depositButton = document.getElementById('depositButton');
 depositButton.addEventListener('click', function(){
-    const inputDeposit = document.getElementById('depositAmount');
-    const putDepositAmount = inputDeposit.value;
-    const newDepositAmount = parseFloat(putDepositAmount);
+    // const inputDeposit = document.getElementById('depositAmount');
+    // const putDepositAmount = inputDeposit.value;
+    // const newDepositAmount = parseFloat(putDepositAmount);
     // console.log(putDepositAmount);
+    const newDepositAmount = inputValue('depositAmount');
+
 
     const addDeposit = document.getElementById('depositAdded');
     const currentAmount = addDeposit.innerText;
@@ -13,7 +24,7 @@ depositButton.addEventListener('click', function(){
 
     addDeposit.innerText = totalDepositAmount;
     // clear input box
-    inputDeposit.value = '';
+    // inputDeposit.value = '';
 
     // Update Account Balance
     const updateBalance  = document.getElementById('balance');
