@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body >
+<header></header>
+<main>
+    <h1 class="text-4xl text-center">Baning System Deposit and withdraw Moooney</h1>
+    <section class="mt-8">
+        <div class="mx-auto grid grid-cols-3 gap-4 w-3/4">
+            <div class="bg-blue-500  p-5 rounded">
+                <h3 class="text-2xl">Deposit</h3>
+                <h4 class="text-4xl">$<span id="depositAdded" >00</span></h4>
+            </div>
+            <div class="bg-amber-600  p-5 rounded"><h3 class="text-2xl">withdraw</h3>
+                <h4 class="text-4xl">$<span id="sanction">00</span></h4></div>
+            <div class="bg-green-500 p-5 rounded"><h3 class="text-2xl">Balance</h3>
+                <h4 class="text-4xl">$<span id="balance">100</span> </h4></div>
+            
+        </div>
+    </section>
+    <section class="mt-8">
+        <div class="mx-auto grid grid-cols-2 gap-4 w-3/4">
+            <div class="bg-amber-500  p-5 rounded">
+                <h3 class="text-2xl mb-2 ">Deposit</h3>
+                <input id="depositAmount" class="rounded px-3 py-2" type="text" placeholder="$Submit Deposit amount">
+                <br>
+                <button id="depositButton" class="bg-sky-400 rounded mt-3 px-2">Submit</button>
+            </div>
+            <div class="bg-gray-400  p-5 rounded">
+                <h3 class="text-2xl mb-2 ">Withdraw</h3>
+                <input id="inputWithdraw" class="rounded px-3 py-2" type="text" placeholder="$Withdraw your Amount">
+                <br>
+                <button id="withdrawButton" class="bg-red-400 rounded mt-3 px-2">Submit</button>
+            </div> 
+        </div>
+    </section>
+</main>
+    <footer>
+
+    </footer>
+    <script src="js/banking.js"></script>
+</body>
+</html>
