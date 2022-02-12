@@ -14,12 +14,16 @@ function updateTotalField(updateTotal, newDepositAmount){
     addAmount.innerText = totalDepositAmount;
     return totalDepositAmount;
 }
-// Total Balance
-function totalUpdatedBalance(newDepositAmount, isAdded){
+function getCurrentBalance(){
     const updateBalance  = document.getElementById('balance');
     const currentBalance = updateBalance.innerText;
     const curentDepositBaalance = parseFloat(currentBalance);
-    updateBalance.innerText = curentDepositBaalance + newDepositAmount;
+    return  curentDepositBaalance;
+}
+// Total Balance
+function totalUpdatedBalance(newDepositAmount, isAdded){
+    const updateBalance  = document.getElementById('balance');
+    const curentDepositBaalance = getCurrentBalance();
     if(isAdded == true){
         updateBalance.innerText = curentDepositBaalance + newDepositAmount;
     }
@@ -32,16 +36,22 @@ const depositButton = document.getElementById('depositButton');
 depositButton.addEventListener('click', function(){
     const newDepositAmount = inputValue('depositAmount');
 // get and Updated Deposit total
-    const currentTotalUpdateAmount = updateTotalField('depositAdded', newDepositAmount);
-    console.log(currentTotalUpdateAmount);
+    if(newDepositAmount >0){
+    updateTotalField('depositAdded', newDepositAmount);
     totalUpdatedBalance(newDepositAmount, true);
+    }
 })
     // Withdraw Balance function
     const withdrawBtn = document.getElementById('withdrawButton');
     withdrawButton.addEventListener('click', function(){
         const currentWithdrawBalnce = inputValue('inputWithdraw');
-        const currentTotalUpdateAmount = updateTotalField('sanction', currentWithdrawBalnce);
-        console.log(currentTotalUpdateAmount);
-        // updated withdraw total balance
+        const CurrentBalance = getCurrentBalance();
+        if(currentWithdrawBalnce >0 && currentWithdrawBalnce <= CurrentBalance){
+        updateTotalField('sanction', currentWithdrawBalnce);
+          // updated withdraw total balance
         totalUpdatedBalance(currentWithdrawBalnce, false);
+        }
+        if(currentWithdrawBalnce > CurrentBalance){
+            console.log('You have no sufficiant Balance!');
+        }
     })
