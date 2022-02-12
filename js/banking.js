@@ -6,7 +6,14 @@ function inputValue(value){
     inputFIeld.value = '';
     return newAmount;
 }
-
+function updateTotalField(updateTotal, newDepositAmount){
+    const addAmount = document.getElementById(updateTotal);
+    const currentAmount = addAmount.innerText;
+    const currentTotalAmount = parseFloat(currentAmount);
+    const totalDepositAmount = currentTotalAmount + newDepositAmount;
+    addAmount.innerText = totalDepositAmount;
+    return totalDepositAmount;
+}
 // FOr Deposit Button
 const depositButton = document.getElementById('depositButton');
 depositButton.addEventListener('click', function(){
@@ -16,17 +23,23 @@ depositButton.addEventListener('click', function(){
     // console.log(putDepositAmount);
     const newDepositAmount = inputValue('depositAmount');
 
+    console.log(newDepositAmount);
+    
+// get and Updated Deposit total
+    // const addDeposit = document.getElementById('depositAdded');
+    // const currentAmount = addDeposit.innerText;
+    // const currentDepositAmount = parseFloat(currentAmount);
+    const currentTotalUpdateAmount = updateTotalField('depositAdded', newDepositAmount);
+    console.log(currentTotalUpdateAmount);
+    
 
-    const addDeposit = document.getElementById('depositAdded');
-    const currentAmount = addDeposit.innerText;
-    const currentDepositAmount = parseFloat(currentAmount);
-    const totalDepositAmount = currentDepositAmount + newDepositAmount;
+    // const totalDepositAmount = currentTotalUpdateAmount + newDepositAmount;
+    // console.log(totalDepositAmount);
 
-    addDeposit.innerText = totalDepositAmount;
     // clear input box
     // inputDeposit.value = '';
 
-    // Update Account Balance
+    // Update Main Account Balance
     const updateBalance  = document.getElementById('balance');
     const currentBalance = updateBalance.innerText;
     const curentDepositBaalance = parseFloat(currentBalance);
@@ -39,18 +52,18 @@ depositButton.addEventListener('click', function(){
     const withdrawBtn = document.getElementById('withdrawButton');
     withdrawButton.addEventListener('click', function(){
         // ad eventlistener
-        const withdrawBalance = document.getElementById('inputWithdraw');
+        // const withdrawBalance = document.getElementById('inputWithdraw');
         // input field data trigger
-        const inputWithdrawBalance = withdrawBalance.value;
-        const currentWithdrawBalnce = parseFloat(inputWithdrawBalance);
+        // const inputWithdrawBalance = withdrawBalance.value;
+        // const currentWithdrawBalnce = parseFloat(inputWithdrawBalance);
+        const currentWithdrawBalnce = inputValue('inputWithdraw');
     //   pass to the withdraw balance
         const sanctionValue = document.getElementById('sanction');
         const currentSanctionValue = sanctionValue.innerText;
         const totalSanctionValue = parseFloat(currentSanctionValue);
-
         const currentTotalWithdrawBalnce = currentWithdrawBalnce + totalSanctionValue;
         sanctionValue.innerText = currentTotalWithdrawBalnce;
-        withdrawBalance.value = '';
+        // withdrawBalance.value = '';
         // if(currentTotalWithdrawBalnce >100 ){
         //     const sanctionValue = document.getElementById('sanction');
         //     sanctionValue.innerText = 'You can not Withdraw because you have no sufficiant Balance!';
