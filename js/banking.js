@@ -15,12 +15,17 @@ function updateTotalField(updateTotal, newDepositAmount){
     return totalDepositAmount;
 }
 // Total Balance
-function totalDepositBalance(newDepositAmount){
+function totalUpdatedBalance(newDepositAmount, isAdded){
     const updateBalance  = document.getElementById('balance');
     const currentBalance = updateBalance.innerText;
     const curentDepositBaalance = parseFloat(currentBalance);
-    const curentTotalDepositBaalance = curentDepositBaalance + newDepositAmount;
-    updateBalance.innerText = curentTotalDepositBaalance;
+    updateBalance.innerText = curentDepositBaalance + newDepositAmount;
+    if(isAdded == true){
+        updateBalance.innerText = curentDepositBaalance + newDepositAmount;
+    }
+    else{
+        updateBalance.innerText = curentDepositBaalance - newDepositAmount;
+    }
 }
 // FOr Deposit Button
 const depositButton = document.getElementById('depositButton');
@@ -29,33 +34,14 @@ depositButton.addEventListener('click', function(){
 // get and Updated Deposit total
     const currentTotalUpdateAmount = updateTotalField('depositAdded', newDepositAmount);
     console.log(currentTotalUpdateAmount);
-    // Update Main Account Balance
-    // const updateBalance  = document.getElementById('balance');
-    // const currentBalance = updateBalance.innerText;
-    // const curentDepositBaalance = parseFloat(currentBalance);
-    // const curentTotalDepositBaalance = curentDepositBaalance + newDepositAmount;
-    // updateBalance.innerText = curentTotalDepositBaalance;
-    totalDepositBalance(newDepositAmount);
+    totalUpdatedBalance(newDepositAmount, true);
 })
     // Withdraw Balance function
     const withdrawBtn = document.getElementById('withdrawButton');
     withdrawButton.addEventListener('click', function(){
         const currentWithdrawBalnce = inputValue('inputWithdraw');
-    //   pass to the withdraw balance
-        const sanctionValue = document.getElementById('sanction');
-        const currentSanctionValue = sanctionValue.innerText;
-        const totalSanctionValue = parseFloat(currentSanctionValue);
-        const currentTotalWithdrawBalnce = currentWithdrawBalnce + totalSanctionValue;
-        sanctionValue.innerText = currentTotalWithdrawBalnce;
-        // Ultimate Total Blance
-        const updateBalance  = document.getElementById('balance');
-        const currentBalance = updateBalance.innerText;
-        const curentDepositBaalance = parseFloat(currentBalance);
-        const curentTotalDepositBaalance = curentDepositBaalance - currentWithdrawBalnce;
-        updateBalance.innerText = curentTotalDepositBaalance;
-        // if(curentTotalDepositBaalance <= 0){
-        //     const updateBalance  = document.getElementById('balance');
-        //     updateBalance.innerText ='You have 0 balance!';
-        // }
-
+        const currentTotalUpdateAmount = updateTotalField('sanction', currentWithdrawBalnce);
+        console.log(currentTotalUpdateAmount);
+        // updated withdraw total balance
+        totalUpdatedBalance(currentWithdrawBalnce, false);
     })
